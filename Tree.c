@@ -183,22 +183,22 @@ NODE* swap(NODE* origin)
 }
 
 //랜덤으로 노드를 생성, 왼쪽 또는 오른쪽에 노드를 생성한다. 
-//temp는 기존의 노드, data는 추가할 노드에 들어갈 데이터
-NODE* random_node(NODE* temp, int data)
+//origin은 기존의 노드, data는 추가할 노드에 들어갈 데이터
+NODE* random_node(NODE* origin, int data)
 {
     NODE* node = (NODE*)malloc(sizeof(NODE));
     node->data = data;
     srand(time(NULL));
     int random = rand()%2;
     if (random==0) {
-        if (temp->left==NULL) temp->left=node;
+        if (origin->left==NULL) origin->left=node;
         else random_node(node,data);
     }
     else {
-        if (temp->right==NULL) temp->right=node;
+        if (origin->right==NULL) origin->right=node;
         else random_node(node,data);
     }
-    return temp;
+    return origin;
 }
 
 //랜덤 트리를 생성하는 함수
